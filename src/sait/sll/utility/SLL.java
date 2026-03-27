@@ -1,12 +1,14 @@
 package sait.sll.utility;
 
 /**
- * Singly Liked List implementation of LinkedListADT interface
+ * Singly Linked List implementation of LinkedListADT interface
  * Stores elements as generic Objects using Node objects
  */
 
 public class SLL implements LinkedListADT {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private Node head; 	// first node in the list
 	private int size;   // number of elements in the list
 	
