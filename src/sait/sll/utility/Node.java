@@ -1,10 +1,14 @@
 package sait.sll.utility;
 
+import java.io.Serializable;
+
 /**
  * Represents single node in a singly linked list
  * Stores generic Object data and a reference to the next node
  */
-public class Node {
+public class Node implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Object data;
     private Node next;

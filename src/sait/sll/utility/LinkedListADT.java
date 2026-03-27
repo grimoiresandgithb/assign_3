@@ -1,12 +1,14 @@
 package sait.sll.utility;
 
+import java.io.Serializable;
+
 /**
  * Abstract data type for a linked list.
- * 
+ *
  * @version 2025
  *
  */
-public interface LinkedListADT 
+public interface LinkedListADT extends Serializable
 {
 	/**
 	 * Returns true if this list is empty, otherwise false.
