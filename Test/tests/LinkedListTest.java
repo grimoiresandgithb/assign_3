@@ -379,16 +379,4 @@ class LinkedListTest {
 		int value = (int) this.linkedList.retrieve(1);
 		assertEquals(2, value);
 	}
-	
-//	@Test
-//	void testInsertUser() {
-//		this.user = new User(1, "Miles Morales", "Spiderman@gmail.com", "ACKsnj21");
-//		this.user = new User(2, "Peni Parker", "SPdrSuit@gmail.com", "SPdrGirl236");
-//		this.user = new User(3, "Hobie Brown", "Spiderpunk@gmail.com", "P@ssw0rd");
-//		
-//		this.linkedList.append(1);
-//		this.linkedList.append(2);
-//		this.linkedList.insert(3, 0);
-//		
-//	}
 }
