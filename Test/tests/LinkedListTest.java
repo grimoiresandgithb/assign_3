@@ -84,6 +84,9 @@ class LinkedListTest {
 		assertEquals("b", value);
 	}
 	
+	/**
+	 * Tests appending elements to the linked list.
+	 */
 	@Test
 	void testDeleteObject() {
 		String testObject1 = "a";
@@ -102,6 +105,9 @@ class LinkedListTest {
 		assertEquals(testObject2, this.linkedList.retrieve(1));
 	}
 	
+	/**
+	 * Tests prepending nodes to linked list.
+	 */
 	@Test
 	void testPrependObject() {
 		String testObject1 = "a";
@@ -118,6 +124,10 @@ class LinkedListTest {
 		assertEquals(testObject1, this.linkedList.retrieve(1));
 	}
 	
+	/**
+	 * Tests inserting node at valid index.
+	 */
+	@Test
 	void testInsertObject() {
 		String testObject1 = "a";
 		String testObject2 = "b";
@@ -131,7 +141,7 @@ class LinkedListTest {
 		assertEquals(3, this.linkedList.size());
 		assertEquals(testObject1, this.linkedList.retrieve(0));
 		assertEquals(testObject3, this.linkedList.retrieve(1));
-		assertEquals(testObject2, this.linkedList.retrieve(3));
+		assertEquals(testObject2, this.linkedList.retrieve(2));
 	}
 
 	
@@ -341,42 +351,62 @@ class LinkedListTest {
 		String value = (String) this.linkedList.retrieve(1);
 		assertEquals("b", value);
 	}
-	
+
+	/**
+	 * Tests appending and retrieving a User object from the linked list.
+	 */
 	@Test
 	void testUser() {
-		this.user = new User(1234, "Peter Parker", "Peterman1234@gmail.com", "SecretIdentity4321");
+		User user1 = new User(1234, "Peter Parker", "Peterman1234@gmail.com", "SecretIdentity4321");
+		
+		this.linkedList.append(user1);
+		
+		assertFalse(this.linkedList.isEmpty());
+		assertEquals(1, this.linkedList.size());
+		
+		User retrieved = (User) this.linkedList.retrieve(0);
+		assertEquals(user1, retrieved);
+		assertTrue(retrieved.isCorrectPassword("SecretIdentity4321"));
 	}
-	
+
+	/**
+	 * Tests replacing a User object in the linked list.
+	 */
 	@Test
 	void testReplaceUser() {
-		this.user = new User(1, "Miles Morales", "Spiderman@gmail.com", "ACKsnj21");
-		this.user = new User(2, "Peni Parker", "SPdrSuit@gmail.com", "SPdrGirl236");
+		User user1 = new User(1, "Miles Morales", "Spiderman@gmail.com", "ACKsnj21");
+		User user2 = new User(2, "Peni Parker", "SPdrSuit@gmail.com", "SPdrGirl236");
 		
-		this.linkedList.append(1);
-		this.linkedList.replace(2, 0);
+		this.linkedList.append(user1);
+		this.linkedList.replace(user2, 0);
 		
 		assertFalse(this.linkedList.isEmpty()); //List must have one object to replace with
 		assertEquals(1, linkedList.size(), "List length should only be one after replacing the only object");
-		assertEquals(2, linkedList.retrieve(0), "The first element should replace the old element");
+
+		User retrieved = (User) linkedList.retrieve(0);
+		assertEquals(user2, retrieved, "The first element should replace the old element");
 	}
 	
+	/**
+	 * Tests finding and retrieving a User object in the linked list.
+	 */
 	@Test
 	void testFindUser() {
-		this.user = new User(1, "Miles Morales", "Spiderman@gmail.com", "ACKsnj21");
-		this.user = new User(2, "Peni Parker", "SPdrSuit@gmail.com", "SPdrGirl236");
-		this.user = new User(3, "Hobie Brown", "Spiderpunk@gmail.com", "P@ssw0rd");
+		User user1 = new User(1, "Miles Morales", "Spiderman@gmail.com", "ACKsnj21");
+		User user2 = new User(2, "Peni Parker", "SPdrSuit@gmail.com", "SPdrGirl236");
+		User user3 = new User(3, "Hobie Brown", "Spiderpunk@gmail.com", "P@ssw0rd");
 		
-		this.linkedList.append(1);
-		this.linkedList.append(2);
-		this.linkedList.append(3);
+		this.linkedList.append(user1);
+		this.linkedList.append(user2);
+		this.linkedList.append(user3);
 		
-		boolean contains = this.linkedList.contains(2);
+		boolean contains = this.linkedList.contains(user2);
 		assertTrue(contains);
 		
-		int index = this.linkedList.indexOf(2);
+		int index = this.linkedList.indexOf(user2);
 		assertEquals(1, index);
 		
-		int value = (int) this.linkedList.retrieve(1);
-		assertEquals(2, value);
+		User retrieved = (User) this.linkedList.retrieve(1);
+		assertEquals(user2, retrieved);
 	}
 }
